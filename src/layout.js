@@ -9,6 +9,9 @@ export default class Layout extends React.Component {
         this.state = {name: "Sueleesoossoo"};
     }
     render() {
+        setTimeout(() => {
+            this.setState({name: "Leehyun"});
+        }, 1000);
         return (
             <div>
                 {this.state.name}
