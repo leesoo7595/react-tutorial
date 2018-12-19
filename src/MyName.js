@@ -1,6 +1,10 @@
 import React from 'react';
 
 class MyName extends React.Component {
+    static defaultProps = {
+        name: '방문자'
+    }
+
     render() {
         return (
             <div>
