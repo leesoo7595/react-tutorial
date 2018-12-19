@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 class Layout extends React.Component {
+    getVal(val) {
+        return "Sueleesoossoo " + val;
+    }
+
     render() {
-        const name = "sueleesoossoo";
         return (
-            <h1>It's {name}!</h1>
+            <h1>{this.getVal("can do everything")}!</h1>
         );
     }
 }
