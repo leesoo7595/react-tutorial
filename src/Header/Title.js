@@ -19,7 +19,7 @@ export default class Title extends React.Component {
                     font: 'bold',
                     backgroundColor: 'blue'
                 }
-            }>THERE IS {this.name}</h1>
+            }>THERE IS {this.name} and {this.props.title}</h1>
         )
     }
 }
