@@ -9,15 +9,19 @@ class Counter extends React.Component {
     }
 
     handleIncrease = () => {
-        this.setState({
-            number: this.state.number + 1
-        });
+        this.setState(
+            (state) => ({
+                number: state.number + 1
+            })
+        )
     };
 
     handleDecrease = () => {
-        this.setState({
-            number: this.state.number - 1
-        });
+        this.setState(
+            (state) => ({
+                number: state.number - 1
+            })
+        )
     };
 
     render() {
