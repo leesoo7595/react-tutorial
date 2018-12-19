@@ -9,11 +9,14 @@ export default class Layout extends React.Component {
     }
 
     render() {
+        var list = [
+            <Header />,
+            <Header />,
+            <Header />,
+        ];
         return (
             <div>
-                <Header />
-                <Header />
-                <Header />
+                {list}
                 <h1>It's {this.name}!</h1>
             </div>
         );
