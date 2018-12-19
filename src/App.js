@@ -1,10 +1,10 @@
 import React from 'react';
-import MyName from "./MyName";
+import MyName from './MyName';
 
 class App extends React.Component {
     render() {
         return (
-            <MyName />
+            <MyName name='리액트'/>
         );
     }
 }
