@@ -26,6 +26,14 @@ class App extends React.Component {
         })
     };
 
+    handleRemove = (id) => {
+        const { information } = this.state;
+        this.setState({
+            // id가 제외된 information 배열을 만듦
+            information: information.filter(info => info.id !== id)
+        })
+    };
+
     render() {
         const { information } = this.state;
         return (
@@ -34,7 +42,8 @@ class App extends React.Component {
                     onCreate={this.handleCreate}
                 />
                 <PhoneInfoList
-                    data={this.state.information}
+                    data={information}
+                    onRemove={this.handleRemove}
                 />
             </div>
         );

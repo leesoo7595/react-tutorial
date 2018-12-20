@@ -4,11 +4,13 @@ import PhoneInfo from "./PhoneInfo";
 class PhoneInfoList extends React.Component {
     // data라는 배열을 가져와서 map을 통해 jsx로 변환해준다.
     static defaultProps = {
-        data: []
+        data: [],
+        // onRemove 함수가 전달되지 않았을 경우의 defaultProps
+        onRemove: () => console.warn('onRemove not defined'),
     };
 
     render() {
-        const { data } = this.props;
+        const { data, onRemove } = this.props;
         const list = data.map(
             // key는 리액트에서 배열을 렌더링할 때 꼭 필요한 값
             // key를 부여하지 않으면, 배열의 index 값이 key로 설정이 된다. 그렇게 된다면 매우 비효율적이다!
@@ -17,7 +19,12 @@ class PhoneInfoList extends React.Component {
             // 그래서 key를 배열의 index값으로 사용하는게 아니라, 데이터를 추가할 때마다 고정적인 고유값을 부여주는 것이 좋다
             // 그렇게 되면 새로운 배열 값이 추가됏을때 새로운 DOM은 하나만 생성된다. 나머지는 바뀌지않고 모두 유지
             // key값은 항상 고유해야한다.
-            info => (<PhoneInfo key={info.id} info={info}/>)
+            info => (
+                <PhoneInfo
+                    key={info.id}
+                    info={info}
+                    onRemove={onRemove}
+                />)
         );
         return (
             <div>
