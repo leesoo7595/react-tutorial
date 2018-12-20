@@ -16,7 +16,8 @@ class App extends React.Component {
                 name: '천이현',
                 phone: '010-6690-7510'
             }
-        ]
+        ],
+        keyword: '',
     };
 
     handleCreate = (data) => {
@@ -25,6 +26,14 @@ class App extends React.Component {
             information: information.concat({ id: this.id++, ...data})
         })
     };
+
+    // 이름으로 전화번호를 찾는 데이터 필터링 기능 구현
+    // input 렌더링 & input 값을 state의 keyword 값에 담기
+    handleChange = (e) => {
+        this.setState({
+            keyword: e.target.value,
+        });
+    }
 
     handleRemove = (id) => {
         const { information } = this.state;
@@ -46,11 +55,16 @@ class App extends React.Component {
     };
 
     render() {
-        const { information } = this.state;
+        const { information, keyword } = this.state;
         return (
             <div>
                 <PhoneForm
                     onCreate={this.handleCreate}
+                />
+                <input
+                    placeholder="검색 할 이름을 입력하세요..."
+                    onChange={this.handleChange}
+                    value={keyword}
                 />
                 <PhoneInfoList
                     data={information}

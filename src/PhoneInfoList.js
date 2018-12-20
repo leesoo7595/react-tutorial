@@ -10,7 +10,15 @@ class PhoneInfoList extends React.Component {
         onUpdate: () => console.warn('onUpdate not defined'),
     };
 
+    // App이 리렌더링됨에 따라 PhoneInfoList도 리렌더링되는 자원을 아끼기위해!
+    shouldComponentUpdate(nextProps, nextState) {
+        // 다음 받아올 데이터가 현제 데이터와 다른 배열일 때 true로 설정하도록
+        // 이렇게 되면 변화가 필요하지 않을 때는 render함수 호출이 되지않는다.
+        return nextProps.data !== this.props.data;
+    }
+
     render() {
+        console.log('render PhoneInfoList');
         const { data, onRemove, onUpdate } = this.props;
         const list = data.map(
             // key는 리액트에서 배열을 렌더링할 때 꼭 필요한 값
