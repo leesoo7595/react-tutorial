@@ -7,10 +7,11 @@ class PhoneInfoList extends React.Component {
         data: [],
         // onRemove 함수가 전달되지 않았을 경우의 defaultProps
         onRemove: () => console.warn('onRemove not defined'),
+        onUpdate: () => console.warn('onUpdate not defined'),
     };
 
     render() {
-        const { data, onRemove } = this.props;
+        const { data, onRemove, onUpdate } = this.props;
         const list = data.map(
             // key는 리액트에서 배열을 렌더링할 때 꼭 필요한 값
             // key를 부여하지 않으면, 배열의 index 값이 key로 설정이 된다. 그렇게 된다면 매우 비효율적이다!
@@ -24,6 +25,7 @@ class PhoneInfoList extends React.Component {
                     key={info.id}
                     info={info}
                     onRemove={onRemove}
+                    onUpdate={onUpdate}
                 />)
         );
         return (
