@@ -33,7 +33,7 @@ class App extends React.Component {
         this.setState({
             keyword: e.target.value,
         });
-    }
+    };
 
     handleRemove = (id) => {
         const { information } = this.state;
@@ -56,18 +56,24 @@ class App extends React.Component {
 
     render() {
         const { information, keyword } = this.state;
+        const filteredList = information.filter(
+            info => info.name.indexOf(keyword) !== -1
+        );
         return (
             <div>
                 <PhoneForm
                     onCreate={this.handleCreate}
                 />
-                <input
-                    placeholder="검색 할 이름을 입력하세요..."
-                    onChange={this.handleChange}
-                    value={keyword}
-                />
+                <p>
+                    <input
+                        placeholder="검색 할 이름을 입력하세요..."
+                        onChange={this.handleChange}
+                        value={keyword}
+                    />
+                </p>
+                <hr/>
                 <PhoneInfoList
-                    data={information}
+                    data={filteredList}
                     onRemove={this.handleRemove}
                     onUpdate={this.handleUpdate}
                 />
