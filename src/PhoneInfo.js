@@ -41,6 +41,16 @@ class PhoneInfo extends React.Component {
         });
     };
 
+    shouldComponentUpdate(nextProps, nextState) {
+        // 수정 상태가 아니고, info 값이 같다면 리렌더링 안함
+        if (!this.state.editing && !nextState.editing && nextProps.info === this.props.info) {
+            return false;
+        }
+        // 나머지 경우엔 리렌더링 한다.
+        return true;
+
+    }
+
     componentDidUpdate(prevProps, prevState) {
         // editing값이 바뀔 때 처리할 로직
         // 수정을 눌렀으면 -> 기존 값이 input에 나타나고
@@ -64,7 +74,9 @@ class PhoneInfo extends React.Component {
     }
 
     // info 객체를 props로 받아와서 렌더링 해준다.
+    // 수정 버튼 누를 때 한번 누르는데 왜 리렌더링은 두 번 될까....
     render() {
+        console.log('render PhoneInfo ' + this.props.info.id);
         const style = {
             border: '1px solid black',
             padding: '8px',

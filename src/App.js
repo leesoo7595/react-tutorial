@@ -57,6 +57,7 @@ class App extends React.Component {
     render() {
         const { information, keyword } = this.state;
         const filteredList = information.filter(
+            // info.name.indexOf(keyword) !== -1 이 false가 나와야 해당 정보를 내보냄
             info => info.name.indexOf(keyword) !== -1
         );
         return (
