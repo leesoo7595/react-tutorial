@@ -5,8 +5,9 @@ class RefSample extends React.Component {
         height: 0
     };
 
-    input = null;
+    input = React.createRef();
     box = null;
+
 
     handleClick = () => {
       this.input.focus();
@@ -22,9 +23,7 @@ class RefSample extends React.Component {
         return (
             <div>
                 <input
-                    ref={ref => {
-                        this.input = ref;
-                    }}
+                    ref={this.input}
                 />
                 <button onClick={this.handleClick}>Focus Input</button>
                 <div
