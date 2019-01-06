@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import CustomTextInput from "./CustomTextInput";
-import AutoFocusTextInput from "./AutoFocusTextInput";
+import TemperatureInput from "./liftingStateUp/TemperatureInput";
+import Calculator from "./liftingStateUp/Calculator";
 
-ReactDOM.render(<AutoFocusTextInput />, document.getElementById('container'));
+ReactDOM.render(
+    <Calculator
+        // src={"http://www.nordikhus.com/wp-content/uploads/2015/03/0178.jpg"}
+        // alt={"빵"}
+        // credit={"google"}
+    />,
+    document.getElementById('container'));
